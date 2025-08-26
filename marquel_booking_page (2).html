@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marquel Yvette Photography - Professional Headshots</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #f4ca78;
+            --primary-dark: #b9914d;
+            --primary-light: #f8e6c8;
+            --gradient-primary: linear-gradient(135deg, #f4ca78 0%, #b9914d 100%);
+            --accent: #fefbf6;
+            --dark: #1a1a1a;
+            --medium: #4a4a4a;
+            --light: #fffffe;
+            --white: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(244, 202, 120, 0.15);
+            --shadow-md: 0 8px 25px rgba(244, 202, 120, 0.25);
+            --shadow-lg: 0 20px 40px rgba(244, 202, 120, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background: var(--white);
+            overflow-x: hidden;
+            font-weight: 400;
+        }
+
+        /* Logo */
+        .logo-container {
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            max-height: 80px;
+            width: auto;
+            filter: drop-shadow(0 2px 8px rgba(244, 202, 120, 0.3));
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background: var(--white);
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(244, 202, 120, 0.2);
+            border-radius: 25px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--medium);
+            margin-bottom: 2rem;
+        }
+
+        .hero-badge::before {
+            content: '✨';
+            font-size: 1rem;
+        }
+
+        .hero-title {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            color: var(--dark);
+            letter-spacing: -0.02em;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-subtitle {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+            color: var(--medium);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+            line-height: 1.7;
+        }
+
+        /* Gallery */
+        .gallery-section {
+            margin: 4rem 0;
+            position: relative;
+        }
+
+        .gallery-container {
+            position: relative;
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .gallery-track {
+            overflow: hidden;
+            border-radius: 16px;
+            position: relative;
+            background: var(--white);
+            padding: 1rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .gallery-slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-image {
+            flex: 0 0 320px;
+            height: 400px;
+            margin-right: 2rem;
+            background: var(--white);
+            border-radius: 12px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(244, 202, 120, 0.15);
+            overflow: hidden;
+        }
+
+        .gallery-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .gallery-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(244, 202, 120, 0.1);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-image:hover {
+            transform: scale(1.05) translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(185, 145, 77, 0.4);
+        }
+
+        .gallery-image:hover::after {
+            opacity: 1;
+        }
+
+        /* Navigation */
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(244, 202, 120, 0.2);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 20;
+            opacity: 0;
+        }
+
+        .gallery-container:hover .gallery-nav {
+            opacity: 1;
+        }
+
+        .gallery-nav:hover {
+            background: var(--white);
+            border-color: var(--primary);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .gallery-nav-prev {
+            left: 1rem;
+        }
+
+        .gallery-nav-next {
+            right: 1rem;
+        }
+
+        .gallery-nav svg {
+            width: 20px;
+            height: 20px;
+            color: var(--dark);
+        }
+
+        /* Progress Dots */
+        .gallery-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 2rem;
+        }
+
+        .gallery-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(244, 202, 120, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-dot.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+
+        /* CTA Button */
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 32px;
+            background: var(--gradient-primary);
+            color: var(--white);
+            text-decoration: none;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 600;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+            margin-top: 2rem;
+        }
+
+        .hero-cta:hover {
+            background: linear-gradient(135deg, #e6b866 0%, #a7833f 100%);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        /* Services */
+        .services {
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .services-title {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .services-description {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 1.125rem;
+            color: var(--medium);
+            font-weight: 400;
+            line-height: 1.7;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(244, 202, 120, 0.1);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(244, 202, 120, 0.2);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-title {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .service-description {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--medium);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .service-features {
+            background: var(--accent);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: auto;
+            border-left: 4px solid var(--primary);
+        }
+
+        .service-features-title {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .service-features-list {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--medium);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .service-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .service-pricing {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .service-price {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            letter-spacing: -0.02em;
+        }
+
+        .service-price-note {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--medium);
+            font-size: 0.85rem;
+            font-weight: 400;
+        }
+
+        .service-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: var(--dark);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 8px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .service-cta:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        /* Process */
+        .process {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--light) 100%);
+        }
+
+        .process-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .process-title {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .process-step {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .process-step:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step-title {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .step-description {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--medium);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .testimonials-title {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            background: var(--accent);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .testimonial.with-photo {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .testimonial-content {
+            flex: 1;
+        }
+
+        .testimonial-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .testimonial-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            font-size: 3rem;
+            color: var(--primary-light);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-style: italic;
+            color: var(--medium);
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 0.9rem;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--dark) 0%, #2a2a2a 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .final-cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .final-cta-title {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: clamp(2.25rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .final-cta-text {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 1.125rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .final-cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 36px;
+            background: var(--white);
+            color: var(--dark);
+            text-decoration: none;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 600;
+            border-radius: 12px;
+            font-size: 1.125rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .final-cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+            text-decoration: none;
+            color: var(--dark);
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .modal-image {
+            width: 100%;
+            max-height: 80vh;
+            background: var(--gradient-primary);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--primary-dark);
+            transform: scale(1.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                max-height: 60px;
+            }
+
+            .hero {
+                min-height: 80vh;
+                padding: 2rem 1rem;
+            }
+
+            .gallery-container {
+                padding: 0 1rem;
+            }
+
+            .gallery-image {
+                flex: 0 0 240px;
+                height: 300px;
+                margin-right: 1rem;
+            }
+
+            .slideWidth {
+                width: 260px; /* 240px + 20px margin */
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .services,
+            .process,
+            .testimonials,
+            .final-cta {
+                padding: 4rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                max-height: 50px;
+            }
+
+            .gallery-image {
+                flex: 0 0 200px;
+                height: 250px;
+            }
+
+            .hero-cta,
+            .final-cta-button {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="logo-container">
+                    <img src="Images/Logo.png" alt="Marquel Yvette Photography" class="logo">
+                </div>
+                <h1 class="hero-title">Professional Headshots That Command Attention</h1>
+                <p class="hero-subtitle">Your headshot is your digital first impression. In a relaxed, guided session, we'll create images that elevate your brand and feel authentically you.</p>
+                
+                <!-- Gallery -->
+                <div class="gallery-section">
+                    <div class="gallery-container">
+                        <div class="gallery-track">
+                            <div class="gallery-slider" id="gallerySlider">
+                                <!-- Images -->
+                                <div class="gallery-image" onclick="openModal(0)"><img src="Images/Beverly_Senita_287-MarquelYvette0039-instagram.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(1)"><img src="Images/Bulger_Marcella_617-MarquelYvette0067-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(2)"><img src="Images/Caras_Sydney_698-MarquelYvette0420-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(3)"><img src="Images/Coster_Emily_462-MarquelYvette0556-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(4)"><img src="Images/Farrell_Holly_952-MarquelYvette0023-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(5)"><img src="Images/Farzam_Leila_821-MarquelYvette0007-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(6)"><img src="Images/Hodge_Danielle_130-MarquelYvette0033-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(7)"><img src="Images/Hovis_Catherine_403-MarquelYvette0013-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(8)"><img src="Images/James_Lia_397-MarquelYvette0012-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(9)"><img src="Images/James_Ryan_538-MarquelYvette0302-retouched.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <!-- Duplicates for seamless loop -->
+                                <div class="gallery-image" onclick="openModal(0)"><img src="Images/Beverly_Senita_287-MarquelYvette0039-instagram.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(1)"><img src="Images/Bulger_Marcella_617-MarquelYvette0067-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(2)"><img src="Images/Caras_Sydney_698-MarquelYvette0420-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(3)"><img src="Images/Coster_Emily_462-MarquelYvette0556-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(4)"><img src="Images/Farrell_Holly_952-MarquelYvette0023-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(5)"><img src="Images/Farzam_Leila_821-MarquelYvette0007-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(6)"><img src="Images/Hodge_Danielle_130-MarquelYvette0033-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(7)"><img src="Images/Hovis_Catherine_403-MarquelYvette0013-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(8)"><img src="Images/James_Lia_397-MarquelYvette0012-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(9)"><img src="Images/James_Ryan_538-MarquelYvette0302-retouched.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Navigation -->
+                        <div class="gallery-nav gallery-nav-prev" onclick="prevSlide()">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="gallery-nav gallery-nav-next" onclick="nextSlide()">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <!-- Dots -->
+                    <div class="gallery-dots">
+                        <div class="gallery-dot active" onclick="goToSlide(0)"></div>
+                        <div class="gallery-dot" onclick="goToSlide(1)"></div>
+                        <div class="gallery-dot" onclick="goToSlide(2)"></div>
+                        <div class="gallery-dot" onclick="goToSlide(3)"></div>
+                        <div class="gallery-dot" onclick="goToSlide(4)"></div>
+                        <div class="gallery-dot" onclick="goToSlide(5)"></div>
+                        <div class="gallery-dot" onclick="goToSlide(6)"></div>
+                        <div class="gallery-dot" onclick="goToSlide(7)"></div>
+                        <div class="gallery-dot" onclick="goToSlide(8)"></div>
+                        <div class="gallery-dot" onclick="goToSlide(9)"></div>
+                    </div>
+                </div>
+                
+                <a href="#services" class="hero-cta">
+                    Explore Sessions
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="services-header">
+                <h2 class="services-title">Choose Your Perfect Session</h2>
+                <p class="services-description">From quick updates to comprehensive branding sessions, we have the perfect package for your needs.</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Express Headshot -->
+                <div class="service-card">
+                    <h3 class="service-title">Express Headshot</h3>
+                    <p class="service-description">Perfect for quick updates without sacrificing quality. Includes one expertly retouched image, with more available if you choose.</p>
+                    <div class="service-features">
+                        <div class="service-features-title">What's Included</div>
+                        <div class="service-features-list">20-minute in-studio session · 1 retouched image ($195 for each additional)</div>
+                    </div>
+                    <div class="service-bottom">
+                        <div class="service-pricing">
+                            <div class="service-price">$300</div>
+                        </div>
+                        <a href="https://api.leadconnectorhq.com/widget/booking/NCT3k8ghuX7oNJMOfmVH" class="service-cta" target="_blank">Book Express</a>
+                    </div>
+                </div>
+
+                <!-- Full Headshot Session -->
+                <div class="service-card">
+                    <h3 class="service-title">Full Headshot Session</h3>
+                    <p class="service-description">A comprehensive studio session with time for multiple outfits and backgrounds. Ideal for professionals who want options.</p>
+                    <div class="service-features">
+                        <div class="service-features-title">What's Included</div>
+                        <div class="service-features-list">1-hour in-studio session · images $195 each</div>
+                    </div>
+                    <div class="service-bottom">
+                        <div class="service-pricing">
+                            <div class="service-price">$190</div>
+                            <div class="service-price-note">session fee</div>
+                        </div>
+                        <a href="https://api.leadconnectorhq.com/widget/booking/VPLpWrcoqb2fXGUr6FwY" class="service-cta" target="_blank">Book Full</a>
+                    </div>
+                </div>
+
+                <!-- Full Session + Makeup -->
+                <div class="service-card">
+                    <h3 class="service-title">Full Session + Makeup</h3>
+                    <p class="service-description">Look and feel your absolute best with professional makeup included before your session.</p>
+                    <div class="service-features">
+                        <div class="service-features-title">What's Included</div>
+                        <div class="service-features-list">2-hour studio session (1 hour makeup + 1 hour shooting) · images $195 each</div>
+                    </div>
+                    <div class="service-bottom">
+                        <div class="service-pricing">
+                            <div class="service-price">$340</div>
+                        </div>
+                        <a href="https://api.leadconnectorhq.com/widget/booking/mJB84OPrbkAX2dNO6OTE" class="service-cta" target="_blank">Book + Makeup</a>
+                    </div>
+                </div>
+
+                <!-- On-Location Session -->
+                <div class="service-card">
+                    <h3 class="service-title">On-Location Session</h3>
+                    <p class="service-description">We bring the studio to your office or chosen location for a polished, consistent look in your own environment.</p>
+                    <div class="service-features">
+                        <div class="service-features-title">What's Included</div>
+                        <div class="service-features-list">1.5-hour on-location session · unlimited outfits · images $195 each</div>
+                    </div>
+                    <div class="service-bottom">
+                        <div class="service-pricing">
+                            <div class="service-price">$440</div>
+                        </div>
+                        <a href="https://api.leadconnectorhq.com/widget/booking/2Oze1V72ihn98RIRf3uj" class="service-cta" target="_blank">Book Location</a>
+                    </div>
+                </div>
+
+                <!-- On-Location + Makeup -->
+                <div class="service-card">
+                    <h3 class="service-title">On-Location + Makeup</h3>
+                    <p class="service-description">Professional makeup and a tailored on-location shoot for a complete, luxury experience.</p>
+                    <div class="service-features">
+                        <div class="service-features-title">What's Included</div>
+                        <div class="service-features-list">3-hour on-location session (1 hour makeup + 1 hour shooting) · images $195 each</div>
+                    </div>
+                    <div class="service-bottom">
+                        <div class="service-pricing">
+                            <div class="service-price">$590</div>
+                        </div>
+                        <a href="https://api.leadconnectorhq.com/widget/booking/BbMI1a8NF3StN8TcnJO0" class="service-cta" target="_blank">Book Premium</a>
+                    </div>
+                </div>
+
+                <!-- Branding Session -->
+                <div class="service-card">
+                    <h3 class="service-title">Branding Session</h3>
+                    <p class="service-description">A full storytelling session for entrepreneurs, executives, and creatives who need a variety of images for marketing, media, and personal branding.</p>
+                    <div class="service-features">
+                        <div class="service-features-title">What's Included</div>
+                        <div class="service-features-list">1-hour on-location session · 25–30 fully retouched images</div>
+                    </div>
+                    <div class="service-bottom">
+                        <div class="service-pricing">
+                            <div class="service-price">$750</div>
+                        </div>
+                        <a href="https://api.leadconnectorhq.com/widget/booking/eVMLe3tMrYMxTa76SmEE" class="service-cta" target="_blank">Book Branding</a>
+                    </div>
+                </div>
+
+                <!-- New Hire Session -->
+                <div class="service-card">
+                    <h3 class="service-title">New Hire Session</h3>
+                    <p class="service-description">Exclusive to current company clients for onboarding or team updates.</p>
+                    <div class="service-features">
+                        <div class="service-features-title">What's Included</div>
+                        <div class="service-features-list">20-minute studio session · 1 retouched image</div>
+                    </div>
+                    <div class="service-bottom">
+                        <div class="service-pricing">
+                            <div class="service-price">$200</div>
+                        </div>
+                        <a href="https://api.leadconnectorhq.com/widget/booking/pzpzBK1ZZLhxswvjKEu7" class="service-cta" target="_blank">Book New Hire</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="process">
+            <div class="process-header">
+                <h2 class="process-title">Your Session Journey</h2>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Book Online</div>
+                    <div class="step-description">Choose your perfect session and schedule your appointment online</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Prep Guide Arrives</div>
+                    <div class="step-description">Receive detailed preparation tips to look your absolute best</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Guided Session</div>
+                    <div class="step-description">Relax and enjoy a professional, comfortable photo experience</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Select Images</div>
+                    <div class="step-description">Review and choose your favorite shots from the session</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-title">Final Delivery</div>
+                    <div class="step-description">Receive your professionally retouched images in 7–10 business days</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <div class="testimonials-header">
+                <h2 class="testimonials-title">What Clients Say</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial with-photo">
+                    <div class="testimonial-content">
+                        <div class="testimonial-text">I dread photos, but Marquel made it easy — the headshot is the best I've ever had.</div>
+                        <div class="testimonial-author">— S. Johnson</div>
+                    </div>
+                    <div class="testimonial-photo">
+                        <img src="Images/Jennings_Mimi_488-MarquelYvette0078-ig.jpg" alt="Professional headshot by Marquel Yvette Photography">
+                    </div>
+                </div>
+                <div class="testimonial with-photo">
+                    <div class="testimonial-content">
+                        <div class="testimonial-text">Exactly how I wanted to be seen: professional, confident, approachable.</div>
+                        <div class="testimonial-author">— T. Morgan</div>
+                    </div>
+                    <div class="testimonial-photo">
+                        <img src="Images/Leonard_Taylor_331-MarquelYvette0050+500px.jpg" alt="Professional headshot by Marquel Yvette Photography">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="final-cta">
+            <div class="final-cta-content">
+                <h2 class="final-cta-title">Ready to Make Your Best Impression?</h2>
+                <p class="final-cta-text">Your next opportunity might start with a single photo. Let's make sure it's your best.</p>
+                <a href="REPLACE_WITH_PRIMARY_CTA_LINK" class="final-cta-button" target="_blank">
+                    Book Your Session Now
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- Modal -->
+        <div class="modal" id="imageModal">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="modal-image" id="modalImage">
+                    <img src="" alt="Professional headshot" id="modalImg">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Gallery functionality
+        let currentPosition = 0;
+        const slideWidth = 340; // 320px + 20px margin
+        const totalImages = 10;
+        let autoSlideInterval;
+        let isHovered = false;
+        let isTransitioning = false;
+
+        const slider = document.getElementById('gallerySlider');
+        const dots = document.querySelectorAll('.gallery-dot');
+
+        // Auto-slide functionality
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => {
+                if (!isHovered && !isTransitioning) {
+                    continuousSlide();
+                }
+            }, 3000);
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+
+        function continuousSlide() {
+            isTransitioning = true;
+            currentPosition -= slideWidth;
+            
+            slider.style.transition = 'transform 0.5s ease';
+            slider.style.transform = `translateX(${currentPosition}px)`;
+            
+            const currentImageIndex = Math.abs(currentPosition / slideWidth) % totalImages;
+            updateDots(currentImageIndex);
+            
+            setTimeout(() => {
+                if (Math.abs(currentPosition) >= slideWidth * totalImages) {
+                    slider.style.transition = 'none';
+                    currentPosition = 0;
+                    slider.style.transform = `translateX(${currentPosition}px)`;
+                }
+                isTransitioning = false;
+            }, 500);
+        }
+
+        function updateDots(activeIndex) {
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === activeIndex);
+            });
+        }
+
+        function nextSlide() {
+            if (!isTransitioning) {
+                continuousSlide();
+                stopAutoSlide();
+                setTimeout(startAutoSlide, 2000);
+            }
+        }
+
+        function prevSlide() {
+            if (!isTransitioning) {
+                isTransitioning = true;
+                currentPosition += slideWidth;
+                
+                if (currentPosition > 0) {
+                    slider.style.transition = 'none';
+                    currentPosition = -(slideWidth * totalImages);
+                    slider.style.transform = `translateX(${currentPosition}px)`;
+                    
+                    setTimeout(() => {
+                        currentPosition += slideWidth;
+                        slider.style.transition = 'transform 0.5s ease';
+                        slider.style.transform = `translateX(${currentPosition}px)`;
+                    }, 50);
+                } else {
+                    slider.style.transition = 'transform 0.5s ease';
+                    slider.style.transform = `translateX(${currentPosition}px)`;
+                }
+                
+                const currentImageIndex = Math.abs(currentPosition / slideWidth) % totalImages;
+                updateDots(currentImageIndex);
+                
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 500);
+                
+                stopAutoSlide();
+                setTimeout(startAutoSlide, 2000);
+            }
+        }
+
+        function goToSlide(index) {
+            if (!isTransitioning) {
+                isTransitioning = true;
+                currentPosition = -(index * slideWidth);
+                slider.style.transition = 'transform 0.5s ease';
+                slider.style.transform = `translateX(${currentPosition}px)`;
+                updateDots(index);
+                
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 500);
+                
+                stopAutoSlide();
+                setTimeout(startAutoSlide, 2000);
+            }
+        }
+
+        // Modal functionality
+        const images = [
+            'Images/Beverly_Senita_287-MarquelYvette0039-instagram.jpg',
+            'Images/Bulger_Marcella_617-MarquelYvette0067-ig.jpg',
+            'Images/Caras_Sydney_698-MarquelYvette0420-ig.jpg',
+            'Images/Coster_Emily_462-MarquelYvette0556-ig.jpg',
+            'Images/Farrell_Holly_952-MarquelYvette0023-ig.jpg',
+            'Images/Farzam_Leila_821-MarquelYvette0007-ig.jpg',
+            'Images/Hodge_Danielle_130-MarquelYvette0033-ig.jpg',
+            'Images/Hovis_Catherine_403-MarquelYvette0013-ig.jpg',
+            'Images/James_Lia_397-MarquelYvette0012-ig.jpg',
+            'Images/James_Ryan_538-MarquelYvette0302-retouched.jpg'
+        ];
+
+        function openModal(imageIndex) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImg');
+            modalImg.src = images[imageIndex];
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            stopAutoSlide();
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            startAutoSlide();
+        }
+
+        // Hover pause functionality
+        const galleryContainer = document.querySelector('.gallery-container');
+        galleryContainer.addEventListener('mouseenter', () => {
+            isHovered = true;
+        });
+
+        galleryContainer.addEventListener('mouseleave', () => {
+            isHovered = false;
+        });
+
+        // Modal interactions
+        document.getElementById('imageModal').addEventListener('click', (e) => {
+            if (e.target.id === 'imageModal') {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize
+        window.addEventListener('load', () => {
+            setTimeout(startAutoSlide, 1000);
+        });
+
+        if (document.readyState === 'complete') {
+            setTimeout(startAutoSlide, 1000);
+        }
+    </script>
+</body>
+</html>
