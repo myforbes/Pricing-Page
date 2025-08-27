@@ -79,7 +79,7 @@
         }
 
         .hero-badge::before {
-            content: '✨';
+            content: '?';
             font-size: 1rem;
         }
 
@@ -91,7 +91,7 @@
             margin-bottom: 2rem;
             color: var(--dark);
             letter-spacing: -0.02em;
-            max-width: 900px;
+            max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -101,7 +101,7 @@
             font-size: clamp(1.1rem, 2.5vw, 1.25rem);
             color: var(--medium);
             margin-bottom: 3rem;
-            max-width: 600px;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
             font-weight: 400;
@@ -116,7 +116,7 @@
 
         .gallery-container {
             position: relative;
-            max-width: 1800px;
+            max-width: 1275px;
             margin: 0 auto;
             padding: 0 2rem;
         }
@@ -128,6 +128,7 @@
             background: var(--white);
             padding: 1rem;
             box-shadow: var(--shadow-sm);
+            width: 100%;
         }
 
         .gallery-slider {
@@ -136,9 +137,9 @@
         }
 
         .gallery-image {
-            flex: 0 0 320px;
-            height: 400px;
-            margin-right: 2rem;
+            flex: 0 0 280px;
+            height: 350px;
+            margin-right: 1.5rem;
             background: var(--white);
             border-radius: 12px;
             position: relative;
@@ -194,6 +195,13 @@
             transition: all 0.3s ease;
             z-index: 20;
             opacity: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-nav {
+                opacity: 1;
+                background: rgba(255, 255, 255, 0.95);
+            }
         }
 
         .gallery-container:hover .gallery-nav {
@@ -688,6 +696,22 @@
             position: relative;
         }
 
+        @media (max-width: 768px) {
+            .modal-content {
+                max-width: 95vw;
+                max-height: 95vh;
+                padding: 1rem;
+                border-radius: 16px;
+            }
+            
+            .modal-close {
+                top: 0.5rem;
+                right: 0.5rem;
+                width: 36px;
+                height: 36px;
+            }
+        }
+
         .modal-image {
             width: 100%;
             max-height: 80vh;
@@ -724,6 +748,14 @@
             transform: scale(1.1);
         }
 
+        /* Mobile optimizations */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .logo {
@@ -735,23 +767,38 @@
                 padding: 2rem 1rem;
             }
 
-            .gallery-container {
+            .hero-title {
+                max-width: 100%;
                 padding: 0 1rem;
             }
 
+            .hero-subtitle {
+                max-width: 100%;
+                padding: 0 1rem;
+            }
+
+            .gallery-container {
+                padding: 0 1rem;
+                max-width: 100%;
+            }
+
             .gallery-image {
-                flex: 0 0 240px;
-                height: 300px;
+                flex: 0 0 220px;
+                height: 275px;
                 margin-right: 1rem;
             }
 
             .slideWidth {
-                width: 260px; /* 240px + 20px margin */
+                width: 236px; /* 220px + 16px margin */
             }
 
             .services-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
+            }
+
+            .service-card {
+                margin: 0 1rem;
             }
 
             .process-steps {
@@ -764,10 +811,18 @@
                 gap: 1.5rem;
             }
 
+            .testimonial.with-photo {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .testimonial-photo {
+                align-self: center;
+            }
+
             .services,
             .process,
-            .testimonials,
-            .final-cta {
+            .testimonials {
                 padding: 4rem 1rem;
             }
         }
@@ -777,18 +832,67 @@
                 max-height: 50px;
             }
 
-            .gallery-image {
-                flex: 0 0 200px;
-                height: 250px;
+            .hero {
+                padding: 1.5rem 0.5rem;
             }
 
-            .hero-cta,
-            .final-cta-button {
-                width: 100%;
-                max-width: 280px;
+            .hero-title {
+                font-size: clamp(1.75rem, 8vw, 2.5rem);
+                padding: 0 0.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: clamp(1rem, 4vw, 1.125rem);
+                padding: 0 0.5rem;
+            }
+
+            .gallery-container {
+                padding: 0 0.5rem;
+            }
+
+            .gallery-image {
+                flex: 0 0 180px;
+                height: 225px;
+                margin-right: 1rem;
+            }
+
+            .gallery-nav {
+                width: 44px;
+                height: 44px;
+            }
+
+            .gallery-nav svg {
+                width: 18px;
+                height: 18px;
             }
 
             .service-card {
+                padding: 1.5rem 1rem;
+                margin: 0 0.5rem;
+            }
+
+            .service-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .service-pricing {
+                align-self: stretch;
+            }
+
+            .service-cta {
+                align-self: stretch;
+                text-align: center;
+            }
+
+            .services,
+            .process,
+            .testimonials {
+                padding: 3rem 0.5rem;
+            }
+
+            .testimonial {
                 padding: 1.5rem;
             }
         }
@@ -800,7 +904,7 @@
         <section class="hero">
             <div class="hero-content">
                 <div class="logo-container">
-                    <img src="Images/Logo.png" alt="Marquel Yvette Photography" class="logo">
+                    <img src="https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/673c9ff95a859a5f78d20923/1732026361674/MarquelYvette_Gold+Dk+Gray+Logo+11-2-24-01.png" alt="Marquel Yvette Photography" class="logo">
                 </div>
                 <h1 class="hero-title">Professional Headshots That Command Attention</h1>
                 <p class="hero-subtitle">Your headshot is your digital first impression. In a relaxed, guided session, we'll create images that elevate your brand and feel authentically you.</p>
@@ -811,27 +915,27 @@
                         <div class="gallery-track">
                             <div class="gallery-slider" id="gallerySlider">
                                 <!-- Images -->
-                                <div class="gallery-image" onclick="openModal(0)"><img src="Images/Beverly_Senita_287-MarquelYvette0039-instagram.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
-                                <div class="gallery-image" onclick="openModal(1)"><img src="Images/Bulger_Marcella_617-MarquelYvette0067-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
-                                <div class="gallery-image" onclick="openModal(2)"><img src="Images/Caras_Sydney_698-MarquelYvette0420-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
-                                <div class="gallery-image" onclick="openModal(3)"><img src="Images/Coster_Emily_462-MarquelYvette0556-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
-                                <div class="gallery-image" onclick="openModal(4)"><img src="Images/Farrell_Holly_952-MarquelYvette0023-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
-                                <div class="gallery-image" onclick="openModal(5)"><img src="Images/Farzam_Leila_821-MarquelYvette0007-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
-                                <div class="gallery-image" onclick="openModal(6)"><img src="Images/Hodge_Danielle_130-MarquelYvette0033-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
-                                <div class="gallery-image" onclick="openModal(7)"><img src="Images/Hovis_Catherine_403-MarquelYvette0013-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
-                                <div class="gallery-image" onclick="openModal(8)"><img src="Images/James_Lia_397-MarquelYvette0012-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
-                                <div class="gallery-image" onclick="openModal(9)"><img src="Images/James_Ryan_538-MarquelYvette0302-retouched.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(0)"><img src="https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/68a61211a736090e54834792/1755714065458/Leach_Phoebe_687-MarquelYvette0260-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(1)"><img src="https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/624c496e8d6c0a6ae15ba121/1649166702217/Cognos.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(2)"><img src="https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/68a60f8d21e8c720b971e1bf/1755713421512/Willis_Samira_937-MarquelYvette0083-ig+%281%29.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(3)"><img src="https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/6446d093c6ed9c0cbd2d3021/1682362515317/Sireesha-Ganti-0103-%28500px%29.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(4)"><img src="https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/6706b744283c401ee30d539f/1728493380310/James_Lia_397-MarquelYvette0012-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(5)"><img src="https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/688959d3fdeb333cdee98afb/1753831891196/Glynis.JPG" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(6)"><img src="https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/68ae140f6bdd5b562061b2af/1756238864341/T+Howze-Edge-0255+1.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(7)"><img src="https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/68ae13d84838056c535daccc/1756238808087/Lee_Eric_612-MarquelYvette0048-retouched.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(8)"><img src="https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/688995fb481f27751b1f67c1/1753847291301/Josu_Fiona_868-MarquelYvette0014-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(9)"><img src="https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/645562b9dc6a78182c7e5075/1683317433753/T-Fairfield-0297-%28500px%29.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
                                 <!-- Duplicates for seamless loop -->
-                                <div class="gallery-image" onclick="openModal(0)"><img src="Images/Beverly_Senita_287-MarquelYvette0039-instagram.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
-                                <div class="gallery-image" onclick="openModal(1)"><img src="Images/Bulger_Marcella_617-MarquelYvette0067-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
-                                <div class="gallery-image" onclick="openModal(2)"><img src="Images/Caras_Sydney_698-MarquelYvette0420-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
-                                <div class="gallery-image" onclick="openModal(3)"><img src="Images/Coster_Emily_462-MarquelYvette0556-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
-                                <div class="gallery-image" onclick="openModal(4)"><img src="Images/Farrell_Holly_952-MarquelYvette0023-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
-                                <div class="gallery-image" onclick="openModal(5)"><img src="Images/Farzam_Leila_821-MarquelYvette0007-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
-                                <div class="gallery-image" onclick="openModal(6)"><img src="Images/Hodge_Danielle_130-MarquelYvette0033-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
-                                <div class="gallery-image" onclick="openModal(7)"><img src="Images/Hovis_Catherine_403-MarquelYvette0013-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
-                                <div class="gallery-image" onclick="openModal(8)"><img src="Images/James_Lia_397-MarquelYvette0012-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
-                                <div class="gallery-image" onclick="openModal(9)"><img src="Images/James_Ryan_538-MarquelYvette0302-retouched.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(0)"><img src="https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/68a61211a736090e54834792/1755714065458/Leach_Phoebe_687-MarquelYvette0260-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(1)"><img src="https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/624c496e8d6c0a6ae15ba121/1649166702217/Cognos.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(2)"><img src="https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/68a60f8d21e8c720b971e1bf/1755713421512/Willis_Samira_937-MarquelYvette0083-ig+%281%29.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(3)"><img src="https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/6446d093c6ed9c0cbd2d3021/1682362515317/Sireesha-Ganti-0103-%28500px%29.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(4)"><img src="https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/6706b744283c401ee30d539f/1728493380310/James_Lia_397-MarquelYvette0012-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(5)"><img src="https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/688959d3fdeb333cdee98afb/1753831891196/Glynis.JPG" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(6)"><img src="https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/68ae140f6bdd5b562061b2af/1756238864341/T+Howze-Edge-0255+1.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(7)"><img src="https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/68ae13d84838056c535daccc/1756238808087/Lee_Eric_612-MarquelYvette0048-retouched.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(8)"><img src="https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/688995fb481f27751b1f67c1/1753847291301/Josu_Fiona_868-MarquelYvette0014-ig.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
+                                <div class="gallery-image" onclick="openModal(9)"><img src="https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/645562b9dc6a78182c7e5075/1683317433753/T-Fairfield-0297-%28500px%29.jpg" alt="Professional headshot by Marquel Yvette Photography"></div>
                             </div>
                         </div>
                         
@@ -863,12 +967,6 @@
                     </div>
                 </div>
                 
-                <a href="#services" class="hero-cta">
-                    Explore Sessions
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
             </div>
         </section>
 
@@ -886,7 +984,7 @@
                     <p class="service-description">Perfect for quick updates without sacrificing quality. Includes one expertly retouched image, with more available if you choose.</p>
                     <div class="service-features">
                         <div class="service-features-title">What's Included</div>
-                        <div class="service-features-list">20-minute in-studio session · 1 retouched image ($195 for each additional)</div>
+                        <div class="service-features-list">20-minute in-studio session � 1 retouched image ($195 for each additional)</div>
                     </div>
                     <div class="service-bottom">
                         <div class="service-pricing">
@@ -902,7 +1000,7 @@
                     <p class="service-description">A comprehensive studio session with time for multiple outfits and backgrounds. Ideal for professionals who want options.</p>
                     <div class="service-features">
                         <div class="service-features-title">What's Included</div>
-                        <div class="service-features-list">1-hour in-studio session · images $195 each</div>
+                        <div class="service-features-list">1-hour in-studio session � images $195 each</div>
                     </div>
                     <div class="service-bottom">
                         <div class="service-pricing">
@@ -919,7 +1017,7 @@
                     <p class="service-description">Look and feel your absolute best with professional makeup included before your session.</p>
                     <div class="service-features">
                         <div class="service-features-title">What's Included</div>
-                        <div class="service-features-list">2-hour studio session (1 hour makeup + 1 hour shooting) · images $195 each</div>
+                        <div class="service-features-list">2-hour studio session (1 hour makeup + 1 hour shooting) � images $195 each</div>
                     </div>
                     <div class="service-bottom">
                         <div class="service-pricing">
@@ -935,7 +1033,7 @@
                     <p class="service-description">We bring the studio to your office or chosen location for a polished, consistent look in your own environment.</p>
                     <div class="service-features">
                         <div class="service-features-title">What's Included</div>
-                        <div class="service-features-list">1.5-hour on-location session · unlimited outfits · images $195 each</div>
+                        <div class="service-features-list">1.5-hour on-location session � unlimited outfits � images $195 each</div>
                     </div>
                     <div class="service-bottom">
                         <div class="service-pricing">
@@ -951,7 +1049,7 @@
                     <p class="service-description">Professional makeup and a tailored on-location shoot for a complete, luxury experience.</p>
                     <div class="service-features">
                         <div class="service-features-title">What's Included</div>
-                        <div class="service-features-list">3-hour on-location session (1 hour makeup + 1 hour shooting) · images $195 each</div>
+                        <div class="service-features-list">3-hour on-location session (1 hour makeup + 1 hour shooting) � images $195 each</div>
                     </div>
                     <div class="service-bottom">
                         <div class="service-pricing">
@@ -967,7 +1065,7 @@
                     <p class="service-description">A full storytelling session for entrepreneurs, executives, and creatives who need a variety of images for marketing, media, and personal branding.</p>
                     <div class="service-features">
                         <div class="service-features-title">What's Included</div>
-                        <div class="service-features-list">1-hour on-location session · 25–30 fully retouched images</div>
+                        <div class="service-features-list">1-hour on-location session � 25�30 fully retouched images</div>
                     </div>
                     <div class="service-bottom">
                         <div class="service-pricing">
@@ -983,7 +1081,7 @@
                     <p class="service-description">Exclusive to current company clients for onboarding or team updates.</p>
                     <div class="service-features">
                         <div class="service-features-title">What's Included</div>
-                        <div class="service-features-list">20-minute studio session · 1 retouched image</div>
+                        <div class="service-features-list">20-minute studio session � 1 retouched image</div>
                     </div>
                     <div class="service-bottom">
                         <div class="service-pricing">
@@ -1024,7 +1122,7 @@
                 <div class="process-step">
                     <div class="step-number">5</div>
                     <div class="step-title">Final Delivery</div>
-                    <div class="step-description">Receive your professionally retouched images in 7–10 business days</div>
+                    <div class="step-description">Receive your professionally retouched images in 7�10 business days</div>
                 </div>
             </div>
         </section>
@@ -1037,8 +1135,8 @@
             <div class="testimonials-grid">
                 <div class="testimonial with-photo">
                     <div class="testimonial-content">
-                        <div class="testimonial-text">I dread photos, but Marquel made it easy — the headshot is the best I've ever had.</div>
-                        <div class="testimonial-author">— S. Johnson</div>
+                        <div class="testimonial-text">I dread photos, but Marquel made it easy � the headshot is the best I've ever had.</div>
+                        <div class="testimonial-author">� S. Johnson</div>
                     </div>
                     <div class="testimonial-photo">
                         <img src="Images/Jennings_Mimi_488-MarquelYvette0078-ig.jpg" alt="Professional headshot by Marquel Yvette Photography">
@@ -1047,7 +1145,7 @@
                 <div class="testimonial with-photo">
                     <div class="testimonial-content">
                         <div class="testimonial-text">Exactly how I wanted to be seen: professional, confident, approachable.</div>
-                        <div class="testimonial-author">— T. Morgan</div>
+                        <div class="testimonial-author">� T. Morgan</div>
                     </div>
                     <div class="testimonial-photo">
                         <img src="Images/Leonard_Taylor_331-MarquelYvette0050+500px.jpg" alt="Professional headshot by Marquel Yvette Photography">
@@ -1056,19 +1154,6 @@
             </div>
         </section>
 
-        <!-- Final CTA -->
-        <section class="final-cta">
-            <div class="final-cta-content">
-                <h2 class="final-cta-title">Ready to Make Your Best Impression?</h2>
-                <p class="final-cta-text">Your next opportunity might start with a single photo. Let's make sure it's your best.</p>
-                <a href="REPLACE_WITH_PRIMARY_CTA_LINK" class="final-cta-button" target="_blank">
-                    Book Your Session Now
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
-            </div>
-        </section>
 
         <!-- Modal -->
         <div class="modal" id="imageModal">
@@ -1088,11 +1173,23 @@
     <script>
         // Gallery functionality
         let currentPosition = 0;
-        const slideWidth = 340; // 320px + 20px margin
+        let slideWidth = 304; // 280px + 24px margin (1.5rem = 24px)
         const totalImages = 10;
+        const totalSlides = 20; // 10 original + 10 duplicates
         let autoSlideInterval;
         let isHovered = false;
         let isTransitioning = false;
+        
+        // Update slideWidth based on screen size
+        function updateSlideWidth() {
+            if (window.innerWidth <= 480) {
+                slideWidth = 196; // 180px + 16px margin
+            } else if (window.innerWidth <= 768) {
+                slideWidth = 236; // 220px + 16px margin  
+            } else {
+                slideWidth = 304; // 280px + 24px margin
+            }
+        }
 
         const slider = document.getElementById('gallerySlider');
         const dots = document.querySelectorAll('.gallery-dot');
@@ -1111,20 +1208,28 @@
         }
 
         function continuousSlide() {
+            if (isTransitioning) return;
+            
             isTransitioning = true;
             currentPosition -= slideWidth;
             
             slider.style.transition = 'transform 0.5s ease';
             slider.style.transform = `translateX(${currentPosition}px)`;
             
-            const currentImageIndex = Math.abs(currentPosition / slideWidth) % totalImages;
-            updateDots(currentImageIndex);
+            // Calculate which image we're showing (for dots)
+            let displayIndex = Math.abs(currentPosition / slideWidth);
+            if (displayIndex >= totalImages) {
+                displayIndex = displayIndex - totalImages;
+            }
+            updateDots(displayIndex);
             
             setTimeout(() => {
+                // When we've scrolled through all duplicates, seamlessly reset
                 if (Math.abs(currentPosition) >= slideWidth * totalImages) {
                     slider.style.transition = 'none';
                     currentPosition = 0;
                     slider.style.transform = `translateX(${currentPosition}px)`;
+                    updateDots(0);
                 }
                 isTransitioning = false;
             }, 500);
@@ -1195,16 +1300,16 @@
 
         // Modal functionality
         const images = [
-            'Images/Beverly_Senita_287-MarquelYvette0039-instagram.jpg',
-            'Images/Bulger_Marcella_617-MarquelYvette0067-ig.jpg',
-            'Images/Caras_Sydney_698-MarquelYvette0420-ig.jpg',
-            'Images/Coster_Emily_462-MarquelYvette0556-ig.jpg',
-            'Images/Farrell_Holly_952-MarquelYvette0023-ig.jpg',
-            'Images/Farzam_Leila_821-MarquelYvette0007-ig.jpg',
-            'Images/Hodge_Danielle_130-MarquelYvette0033-ig.jpg',
-            'Images/Hovis_Catherine_403-MarquelYvette0013-ig.jpg',
-            'Images/James_Lia_397-MarquelYvette0012-ig.jpg',
-            'Images/James_Ryan_538-MarquelYvette0302-retouched.jpg'
+            'https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/68a61211a736090e54834792/1755714065458/Leach_Phoebe_687-MarquelYvette0260-ig.jpg',
+            'https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/624c496e8d6c0a6ae15ba121/1649166702217/Cognos.jpg',
+            'https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/68a60f8d21e8c720b971e1bf/1755713421512/Willis_Samira_937-MarquelYvette0083-ig+%281%29.jpg',
+            'https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/6446d093c6ed9c0cbd2d3021/1682362515317/Sireesha-Ganti-0103-%28500px%29.jpg',
+            'https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/6706b744283c401ee30d539f/1728493380310/James_Lia_397-MarquelYvette0012-ig.jpg',
+            'https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/688959d3fdeb333cdee98afb/1753831891196/Glynis.JPG',
+            'https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/68ae140f6bdd5b562061b2af/1756238864341/T+Howze-Edge-0255+1.jpg',
+            'https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/68ae13d84838056c535daccc/1756238808087/Lee_Eric_612-MarquelYvette0048-retouched.jpg',
+            'https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/688995fb481f27751b1f67c1/1753847291301/Josu_Fiona_868-MarquelYvette0014-ig.jpg',
+            'https://static1.squarespace.com/static/61d60619f1d2fa0fc9f54503/t/645562b9dc6a78182c7e5075/1683317433753/T-Fairfield-0297-%28500px%29.jpg'
         ];
 
         function openModal(imageIndex) {
@@ -1232,6 +1337,39 @@
         galleryContainer.addEventListener('mouseleave', () => {
             isHovered = false;
         });
+
+        // Touch support for mobile swiping
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let isTouching = false;
+
+        galleryContainer.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            isTouching = true;
+            isHovered = true; // Pause auto-scroll during touch
+        });
+
+        galleryContainer.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            isTouching = false;
+            isHovered = false; // Resume auto-scroll after touch
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const swipeDistance = touchStartX - touchEndX;
+            
+            if (Math.abs(swipeDistance) > swipeThreshold) {
+                if (swipeDistance > 0) {
+                    // Swipe left - next slide
+                    nextSlide();
+                } else {
+                    // Swipe right - previous slide
+                    prevSlide();
+                }
+            }
+        }
 
         // Modal interactions
         document.getElementById('imageModal').addEventListener('click', (e) => {
@@ -1262,10 +1400,26 @@
 
         // Initialize
         window.addEventListener('load', () => {
+            updateSlideWidth();
             setTimeout(startAutoSlide, 1000);
+        });
+        
+        window.addEventListener('resize', () => {
+            updateSlideWidth();
+            // Reset position to avoid issues
+            stopAutoSlide();
+            currentPosition = 0;
+            slider.style.transition = 'none';
+            slider.style.transform = `translateX(${currentPosition}px)`;
+            updateDots(0);
+            setTimeout(() => {
+                slider.style.transition = 'transform 0.5s ease';
+                startAutoSlide();
+            }, 100);
         });
 
         if (document.readyState === 'complete') {
+            updateSlideWidth();
             setTimeout(startAutoSlide, 1000);
         }
     </script>
