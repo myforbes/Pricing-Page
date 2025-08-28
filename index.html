@@ -452,11 +452,16 @@
         .process {
             padding: 3rem 2rem;
             background: linear-gradient(135deg, var(--accent) 0%, var(--light) 100%);
+            display: block !important;
         }
 
         .process-header {
             text-align: center;
             margin-bottom: 4rem;
+            display: block !important;
+            width: 100% !important;
+            position: relative !important;
+            clear: both !important;
         }
 
         .process-title {
@@ -466,14 +471,29 @@
             color: var(--dark);
             margin-bottom: 1rem;
             letter-spacing: -0.02em;
+            display: block !important;
+            width: 100% !important;
+            text-align: center !important;
+            position: relative !important;
+            clear: both !important;
+        }
+
+        .process-content {
+            display: block !important;
+            width: 100% !important;
+            clear: both !important;
+            position: relative !important;
         }
 
         .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
+            clear: both !important;
+            width: 100% !important;
         }
 
         .process-step {
@@ -483,6 +503,9 @@
             text-align: center;
             transition: all 0.3s ease;
             box-shadow: var(--shadow-sm);
+            flex: 1 1 200px;
+            min-width: 200px;
+            max-width: 300px;
         }
 
         .process-step:hover {
@@ -1138,31 +1161,33 @@
             <div class="process-header">
                 <h2 class="process-title">Your Session Journey</h2>
             </div>
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <div class="step-title">Book Online</div>
-                    <div class="step-description">Choose your perfect session and schedule your appointment online</div>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <div class="step-title">Prep Guide Arrives</div>
-                    <div class="step-description">Receive detailed preparation tips to look your absolute best</div>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <div class="step-title">Guided Session</div>
-                    <div class="step-description">Relax and enjoy a professional, comfortable photo experience</div>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">4</div>
-                    <div class="step-title">Select Images</div>
-                    <div class="step-description">Review and choose your favorite shots from the session</div>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">5</div>
-                    <div class="step-title">Final Delivery</div>
-                    <div class="step-description">Receive your professionally retouched images in 7-10 business days</div>
+            <div class="process-content">
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Book Online</div>
+                        <div class="step-description">Choose your perfect session and schedule your appointment online</div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Prep Guide Arrives</div>
+                        <div class="step-description">Receive detailed preparation tips to look your absolute best</div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Guided Session</div>
+                        <div class="step-description">Relax and enjoy a professional, comfortable photo experience</div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Select Images</div>
+                        <div class="step-description">Review and choose your favorite shots from the session</div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">5</div>
+                        <div class="step-title">Final Delivery</div>
+                        <div class="step-description">Receive your professionally retouched images in 7-10 business days</div>
+                    </div>
                 </div>
             </div>
         </section>
